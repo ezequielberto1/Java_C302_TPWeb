@@ -35,9 +35,9 @@ public class CtrlABMPersonaje {
 		dataPer.delete(cod, nom);
 	}
 	
-	public Personaje getPersonaje (String nom){
+	/*public Personaje getPersonaje (String nom){
 		return dataPer.getByNombre(nom);
-	}
+	}*/
 	
 	public Personaje getPersonaje (int cod){
 		return dataPer.getByCodigo(cod);

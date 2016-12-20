@@ -20,10 +20,10 @@
 	    <div class="container">
 	<% if(turno==1){%>
       <form class="form-signin" name="signin" action="Ataque" method="post">
-        <h2 class="form-signin-heading"><%=p1.getNombre() %></h2>
-        <label for="inputPersonaje1" class="sr-only">Vida</label><br/><%=p1.getVida() %>
-        <input class="form-control" value="<%=p1.getVida() %>" required="" autofocus="" type="text" readonly="readonly">
-        <input class="form-control" value="<%=p1.getEnergia() %>" required="" autofocus="" type="text" readonly="readonly">
+        <h2 class="form-signin-heading"><%=p1.getNombre() %></h2><br>
+        <label for="inputPersonaje1" class="sr-only">Vida</label><br/>
+        <input class="form-control" value="<%=p1.getVida() %>" required="" autofocus="" type="text" readonly="readonly"><br/>
+        <input class="form-control" value="<%=p1.getEnergia() %>" required="" autofocus="" type="text" readonly="readonly"><br>
         
         
         <input name="turno" type="hidden" value="1">

@@ -152,7 +152,7 @@ public class DataPersonaje {
 	}
 
 
-	public Personaje getByNombre(String nom){
+	/*public Personaje getByNombre(String nom){
 
 		Personaje p=null;
 
@@ -199,7 +199,7 @@ public class DataPersonaje {
 			}
 		}		
 		return p;
-	}
+	}*/
 
 	public Personaje getByCodigo(int cod){
 
