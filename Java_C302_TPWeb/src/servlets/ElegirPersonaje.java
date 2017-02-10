@@ -44,16 +44,20 @@ public class ElegirPersonaje extends HttpServlet {
 		
 		Personaje p1=ctrl.getPersonaje(cod1);
 		Personaje p2=ctrl.getPersonaje(cod2);
+		
 		//Personaje p1=new Personaje();
 		//Personaje p2=new Personaje();
-		//System.out.println(p1.getCodigo()+" "+p2.getCodigo());
+		System.out.println(p1.getCodigo()+" "+p2.getCodigo());
+		//System.out.println("ss");
 		//p1.setCodigo(cod1);
 		//p1.setNombre("P1");
 
-		if(p1.equals(null))
+		/*if(p1.equals(null)){
 			System.out.println("p1 null");
-		if(p2.equals(null))
+			}
+		if(p2.equals(null)){
 			System.out.println("p2 null");
+		}*/
 		//p2.setCodigo(cod2);
 		//p2.setNombre("P2");
 
@@ -61,7 +65,7 @@ public class ElegirPersonaje extends HttpServlet {
 		request.getSession().setAttribute("P2", p2);
 		request.getSession().setAttribute("Turno", 1);
 		//response.sendRedirect("WEB-INF/war.jsp");
-		//request.getRequestDispatcher("WEB-INF/pelea.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/pelea.jsp").forward(request, response);
 		
 	}
 

@@ -8,9 +8,5 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/Users/Ezequiel/Downloads/Java/servlet-api.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Ezequiel/Downloads/Java/mysql-connector-java-5.1.39/mysql-connector-java-5.1.39/mysql-connector-java-5.1.39-bin.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Ezequiel/Downloads/Java/apache-log4j-2.6.1-bin/log4j-api-2.6.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Ezequiel/Downloads/Java/apache-log4j-2.6.1-bin/log4j-core-2.6.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

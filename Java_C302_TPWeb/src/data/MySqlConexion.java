@@ -13,7 +13,7 @@ public class MySqlConexion
 	private String host="localhost";
 	private String port="3306";
 	private String user="root";
-	private String pass="";
+	private String pass="admin";
 	private String db="java2016";
 	private String dbType="mysql";
 	
