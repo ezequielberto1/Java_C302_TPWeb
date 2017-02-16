@@ -1,6 +1,8 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.Random;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,25 +38,79 @@ public class Ataque extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		CtrlABMPersonaje ctrl = new CtrlABMPersonaje();
-		int cod1;
-		cod1=Integer.parseInt(request.getParameter("Personaje1"));
-		int cod2;
-		cod2=Integer.parseInt(request.getParameter("Personaje2"));
-		//Personaje p1=ctrl.getPersonaje(cod1);
-		//Personaje p2=ctrl.getPersonaje(cod2);
-		Personaje p1=new Personaje();
-		Personaje p2=new Personaje();
-		p1.setCodigo(cod1);
-		p1.setNombre("P1");
+		int personajeActivo, ptosAtaque;
+		Personaje p1= (Personaje)request.getSession().getAttribute("P1");
+		Personaje p2= (Personaje)request.getSession().getAttribute("P2");
+		Random rn = new Random();
+		personajeActivo=Integer.parseInt(request.getParameter("personajeActivo"));
 
-		p2.setCodigo(cod2);
-		p2.setNombre("P2");
+		ptosAtaque=Integer.parseInt(request.getParameter("ptosAtaque"));
+		
+		if (personajeActivo==1) {
+			if (p1.getEnergiaPartida() <= ptosAtaque) {
+				
+				p1.setEnergiaPartida(p1.getEnergiaPartida()-ptosAtaque);
+				
+				if (p2.getEvasion()<=(rn.nextInt(100) + 1))
+				{
+					if (p2.getVidaPartida() < ptosAtaque)
+					{
+						request.getSession().setAttribute("gano", true);
+						request.getRequestDispatcher("WEB-INF/pelea.jsp").forward(request, response);
+
+					}
+					else
+					{					
+						p2.setVidaPartida(p2.getVidaPartida()-ptosAtaque);				
+					}
+					
+				}
+				request.getSession().setAttribute("turno", 2);
+			}
+			else
+			{
+				request.getSession().setAttribute("errorEnergia", true);
+				request.getRequestDispatcher("WEB-INF/pelea.jsp").forward(request, response);
+			}
+		}
+		
+		else
+		{
+			if (p2.getEnergiaPartida() <= ptosAtaque) {
+				
+				p2.setEnergiaPartida(p2.getEnergiaPartida()-ptosAtaque);
+				
+				if (p1.getEvasion()<=(rn.nextInt(100) + 1))
+				{
+					if (p1.getVidaPartida() < ptosAtaque)
+					{
+						request.getSession().setAttribute("gano", true);
+						request.getRequestDispatcher("WEB-INF/pelea.jsp").forward(request, response);
+
+					}
+					else
+					{
+						p1.setVidaPartida(p1.getVidaPartida()-ptosAtaque);				
+					}
+					
+				}
+				request.getSession().setAttribute("turno", 1);
+			}
+			else
+			{
+				request.getSession().setAttribute("errorEnergia", true);
+				request.getRequestDispatcher("WEB-INF/pelea.jsp").forward(request, response);
+			}
+		}
+		
 
 		request.getSession().setAttribute("P1", p1);
 		request.getSession().setAttribute("P2", p2);
 		//response.sendRedirect("WEB-INF/war.jsp");
 		request.getRequestDispatcher("WEB-INF/pelea.jsp").forward(request, response);
+		//response.sendRedirect("Java_C302_TPWeb/Ataque");
 		
 	}
 

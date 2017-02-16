@@ -225,7 +225,7 @@ public class DataPersonaje {
 			}
 		} 
 		catch (SQLException e) {
-
+			
 			e.printStackTrace();
 		} 
 		catch (ApplicationException e) {
