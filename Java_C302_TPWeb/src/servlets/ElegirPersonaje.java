@@ -66,8 +66,7 @@ public class ElegirPersonaje extends HttpServlet {
 		request.getSession().setAttribute("P2", p2);
 		request.getSession().setAttribute("gano", false);
 		request.getSession().setAttribute("errorEnergia", false);
-		 //rn.nextInt(2) + 1
-		request.getSession().setAttribute("Turno", 1);
+		request.getSession().setAttribute("turno", rn.nextInt(2) + 1);
 		//response.sendRedirect("WEB-INF/war.jsp");
 		request.getRequestDispatcher("WEB-INF/pelea.jsp").forward(request, response);
 		

@@ -20,10 +20,11 @@
 		Personaje p2= ((Personaje)session.getAttribute("P2"));
     	boolean errorEnergia = (Boolean)(session.getAttribute("errorEnergia"));
     	boolean gano = (Boolean)(session.getAttribute("gano"));
-		int turno = ((Integer)session.getAttribute("Turno"));
+		int turno = ((Integer)session.getAttribute("turno"));
 	%>
 	<%=p1.getCodigo()+" "+p1.getNombre() %>
-	<%=p2.getCodigo()+" "+p2.getNombre() %>
+	<%=p2.getCodigo()+" "+p2.getNombre() %><br/>
+	<%=turno %>
 	
 	    <div class="container">
 	<% if(gano != true){%>    
@@ -33,13 +34,13 @@
 		  <form class="form-signin" name="signin" action="Ataque" method="post">
 	        <h2 class="form-signin-heading"><strong><%=p1.getNombre() %></strong></h2><br>
 	        <label for="inputPersonaje1" style="color: #000;">Vida:</label><br/>
-	        <input class="form-control" value="<%=p1.getVida() %>" required="" autofocus="" type="text" readonly="readonly"><br/>
+	        <input class="form-control" value="<%=p1.getVidaPartida() %>" required="" autofocus="" type="text" readonly="readonly"><br/>
 	        <label for="inputPersonaje1" style="color: #000;">Energia:</label><br/>
-	        <input class="form-control" value="<%=p1.getEnergia() %>" required="" autofocus="" type="text" readonly="readonly"><br>
+	        <input class="form-control" value="<%=p1.getEnergiaPartida() %>" required="" autofocus="" type="text" readonly="readonly"><br>
 	        <label for="inputPersonaje1" style="color: #000;">Puntos de ataque:</label>
 	        <input class="form-control"  required="" autofocus="" type="text" name="ptosAtaque"><br>
 	         <% if(errorEnergia==true){%>
-	         	<div class="danger">La energia elegida supera los puntos disponibles</div>
+	         	<div  style="color: red;">La energia elegida supera los puntos disponibles</div>
 	         	<%}%>
 	        <input name="personajeActivo" type="hidden" value="1">
 	        <button class="btn btn-lg btn-primary btn-block" type="submit">Atacar!</button>
@@ -55,9 +56,9 @@
   		<div class="col-md-6">
 	        <h2 class="form-signin-heading"><%=p2.getNombre() %></h2><br>
 	        <label for="inputPersonaje1" style="color: #000;">Vida:</label><br/>
-	        <input class="form-control" value="<%=p2.getVida() %>" required="" autofocus="" type="text" readonly="readonly"><br/>
+	        <input class="form-control" value="<%=p2.getVidaPartida() %>" required="" autofocus="" type="text" readonly="readonly"><br/>
 	        <label for="inputPersonaje1" style="color: #000;">Energia:</label><br/>
-	        <input class="form-control" value="<%=p2.getEnergia() %>" required="" autofocus="" type="text" readonly="readonly"><br>
+	        <input class="form-control" value="<%=p2.getEnergiaPartida() %>" required="" autofocus="" type="text" readonly="readonly"><br>
   			
   		
   		</div>
@@ -69,13 +70,13 @@
 		  <form class="form-signin" name="signin" action="Ataque" method="post">
 	        <h2 class="form-signin-heading"><strong><%=p2.getNombre() %></strong></h2><br>
 	        <label for="inputPersonaje1" style="color: #000;">Vida:</label><br/>
-	        <input class="form-control" value="<%=p2.getVida() %>" required="" autofocus="" type="text" readonly="readonly"><br/>
+	        <input class="form-control" value="<%=p2.getVidaPartida() %>" required="" autofocus="" type="text" readonly="readonly"><br/>
 	        <label for="inputPersonaje1" style="color: #000;">Energia:</label><br/>
-	        <input class="form-control" value="<%=p2.getEnergia() %>" required="" autofocus="" type="text" readonly="readonly"><br>
+	        <input class="form-control" value="<%=p2.getEnergiaPartida() %>" required="" autofocus="" type="text" readonly="readonly"><br>
 	        <label for="inputPersonaje1" style="color: #000;">Puntos de ataque:</label>
 	        <input class="form-control"  required="" autofocus="" type="text" name="ptosAtaque"><br>
 	         <% if(errorEnergia==true){%>
-	         	<div class="danger">La energia elegida supera los puntos disponibles</div>
+	         	<div style="color: red;">La energia elegida supera los puntos disponibles</div>
 	         	<%}%>
 	        <input name="personajeActivo" type="hidden" value="2">
 	        <button class="btn btn-lg btn-primary btn-block" type="submit">Atacar!</button>
@@ -89,11 +90,11 @@
 	  
 	  </div>
   		<div class="col-md-6">
-	        <h2 class="form-signin-heading"><%=p2.getNombre() %></h2><br>
+	        <h2 class="form-signin-heading"><%=p1.getNombre() %></h2><br>
 	        <label for="inputPersonaje1" style="color: #000;">Vida:</label><br/>
-	        <input class="form-control" value="<%=p2.getVida() %>" required="" autofocus="" type="text" readonly="readonly"><br/>
+	        <input class="form-control" value="<%=p1.getVidaPartida() %>" required="" autofocus="" type="text" readonly="readonly"><br/>
 	        <label for="inputPersonaje1" style="color: #000;">Energia:</label><br/>
-	        <input class="form-control" value="<%=p2.getEnergia() %>" required="" autofocus="" type="text" readonly="readonly"><br>
+	        <input class="form-control" value="<%=p1.getEnergiaPartida() %>" required="" autofocus="" type="text" readonly="readonly"><br>
   			
   		
   		</div>

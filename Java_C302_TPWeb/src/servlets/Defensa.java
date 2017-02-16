@@ -58,6 +58,7 @@ public class Defensa extends HttpServlet {
 			p2.setVidaPartida(p2.getVida()*p2.getDefensa()/250);
 			request.getSession().setAttribute("turno", 1);
 		}	
+		request.getRequestDispatcher("WEB-INF/pelea.jsp").forward(request, response);
 	}
 	
 	
