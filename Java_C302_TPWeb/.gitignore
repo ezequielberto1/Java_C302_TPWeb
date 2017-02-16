@@ -1,1 +1,3 @@
 /build/
+
+!Java_C302_TPWeb/lib/*.jar
