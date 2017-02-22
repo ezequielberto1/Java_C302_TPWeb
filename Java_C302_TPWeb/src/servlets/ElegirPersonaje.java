@@ -40,26 +40,27 @@ public class ElegirPersonaje extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CtrlABMPersonaje ctrl = new CtrlABMPersonaje();
 		Random rn = new Random();
-		int cod1;
-		cod1=Integer.parseInt(request.getParameter("Personaje1"));
-		int cod2;
-		cod2=Integer.parseInt(request.getParameter("Personaje2"));
+		int cod1=Integer.parseInt(request.getParameter("Personaje1"));
+		int cod2=Integer.parseInt(request.getParameter("Personaje2"));
 		
 		Personaje p1=ctrl.getPersonaje(cod1);
-		p1.setEnergiaPartida(p1.getEnergia());
-		p1.setVidaPartida(p1.getVida());
+		if(p1!=null){
+			System.out.println("entra 1");
+			p1.setEnergiaPartida(p1.getEnergia());
+			p1.setVidaPartida(p1.getVida());
+		}
+		else
+			System.out.println("null");
+			//notificar que no se encontró personaje. No seguir ejecutando el codigo que sigue debajo.
 		Personaje p2=ctrl.getPersonaje(cod2);
-		p2.setEnergiaPartida(p2.getEnergia());
-		p2.setVidaPartida(p2.getVida());
-		
-		System.out.println(p1.getCodigo()+" "+p2.getCodigo());
+		if(p2!=null){
+			p2.setEnergiaPartida(p2.getEnergia());
+			p2.setVidaPartida(p2.getVida());
+		}
+		else
+			System.out.println("null");
+			//notificar que no se encontró personaje. No seguir ejecutando el codigo que sigue debajo.
 
-		/*if(p1.equals(null)){
-			System.out.println("p1 null");
-			}
-		if(p2.equals(null)){
-			System.out.println("p2 null");
-		}*/
 
 
 		request.getSession().setAttribute("P1", p1);

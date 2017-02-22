@@ -102,9 +102,9 @@
       <% }%>
       <% }else{%> 
       		<% if(turno == 1){%>
-      			<h1> Gano jugador: <%=p1.getNombre()%></h1>
+      			<h1> ¡Gano jugador: <%=p1.getNombre()%>! Se han sumado 10 pts a sus puntos totales.</h1>
       		<% }else{%> 
-      			<h1> Gano jugador: <%=p2.getNombre()%></h1>
+      			<h1> ¡Gano jugador: <%=p2.getNombre()%>! Se han sumado 10 pts a sus puntos totales.</h1>
      	 <% }%> 
       <% }%>
     </div> <!-- /container -->

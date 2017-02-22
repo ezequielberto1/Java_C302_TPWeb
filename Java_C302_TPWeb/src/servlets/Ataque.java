@@ -55,8 +55,9 @@ public class Ataque extends HttpServlet {
 
 				if (p2.getEvasion()<=(rn.nextInt(100) + 1))
 				{
-					if (p2.getVidaPartida() < ptosAtaque || p2.getVidaPartida() == 0)
+					if ((p2.getVidaPartida() - ptosAtaque) <= 0)
 					{
+						p1.setPtos_totales(p1.getPtos_totales()+10);
 						request.getSession().setAttribute("gano", true);
 						//request.getRequestDispatcher("WEB-INF/pelea.jsp").forward(request, response);
 
@@ -89,8 +90,9 @@ public class Ataque extends HttpServlet {
 
 				if (p1.getEvasion()<=(rn.nextInt(100) + 1))
 				{
-					if (p1.getVidaPartida() < ptosAtaque || p1.getVidaPartida() == 0)
+					if ((p1.getVidaPartida()- ptosAtaque) <= 0)
 					{
+						p2.setPtos_totales(p2.getPtos_totales()+10);
 						request.getSession().setAttribute("gano", true);
 						//request.getRequestDispatcher("WEB-INF/pelea.jsp").forward(request, response);
 

@@ -42,21 +42,46 @@ public class Defensa extends HttpServlet {
 		
 		
 		int personajeActivo=Integer.parseInt(request.getParameter("personajeActivo"));
+		int energiaRecuperada;
+		int vidaRecuperada;
 
 		
 		if (personajeActivo==1)
 		{
 			Personaje p1= (Personaje)request.getSession().getAttribute("P1");
-			p1.setEnergiaPartida(p1.getEnergia()*p1.getDefensa()/100);
-			p1.setVidaPartida(p1.getVida()*p1.getDefensa()/250);
+			
+			energiaRecuperada = p1.getEnergia()*p1.getDefensa()/100;
+			vidaRecuperada = p1.getVida()*p1.getDefensa()/250;
+			
+			if((p1.getEnergiaPartida()+energiaRecuperada)<=p1.getEnergia())
+				p1.setEnergiaPartida(p1.getEnergiaPartida()+energiaRecuperada);
+			else
+				p1.setEnergiaPartida(p1.getEnergia());
+			if((p1.getVidaPartida()+vidaRecuperada)<=p1.getVida())
+				p1.setVidaPartida(p1.getVidaPartida()+vidaRecuperada);
+			else
+				p1.setVidaPartida(p1.getVida());
+			
 			request.getSession().setAttribute("turno", 2);
 		}
 		else
 		{
 			Personaje p2= (Personaje)request.getSession().getAttribute("P2");	
-			p2.setEnergiaPartida(p2.getEnergia()*p2.getDefensa()/100);
-			p2.setVidaPartida(p2.getVida()*p2.getDefensa()/250);
+			
+			energiaRecuperada = p2.getEnergia()*p2.getDefensa()/100;
+			vidaRecuperada = p2.getVida()*p2.getDefensa()/250;
+			
+			if((p2.getEnergiaPartida()+energiaRecuperada)<=p2.getEnergia())
+				p2.setEnergiaPartida(p2.getEnergiaPartida()+energiaRecuperada);
+			else
+				p2.setEnergiaPartida(p2.getEnergia());
+			if((p2.getVidaPartida()+vidaRecuperada)<=p2.getVida())
+				p2.setVidaPartida(p2.getVidaPartida()+vidaRecuperada);
+			else	
+				p2.setVidaPartida(p2.getVida());
+			
 			request.getSession().setAttribute("turno", 1);
+			
 		}	
 		request.getRequestDispatcher("WEB-INF/pelea.jsp").forward(request, response);
 	}
