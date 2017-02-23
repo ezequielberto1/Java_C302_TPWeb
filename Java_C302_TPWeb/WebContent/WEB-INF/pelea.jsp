@@ -21,6 +21,7 @@
     	boolean errorEnergia = (Boolean)(session.getAttribute("errorEnergia"));
     	boolean gano = (Boolean)(session.getAttribute("gano"));
 		int turno = ((Integer)session.getAttribute("turno"));
+		System.out.println(gano);
 	%>
 	<%=p1.getCodigo()+" "+p1.getNombre() %>
 	<%=p2.getCodigo()+" "+p2.getNombre() %><br/>
@@ -102,9 +103,9 @@
       <% }%>
       <% }else{%> 
       		<% if(turno == 1){%>
-      			<h1> ¡Gano jugador: <%=p1.getNombre()%>! Se han sumado 10 pts a sus puntos totales.</h1>
-      		<% }else{%> 
       			<h1> ¡Gano jugador: <%=p2.getNombre()%>! Se han sumado 10 pts a sus puntos totales.</h1>
+      		<% }else{%> 
+      			<h1> ¡Gano jugador: <%=p1.getNombre()%>! Se han sumado 10 pts a sus puntos totales.</h1>
      	 <% }%> 
       <% }%>
     </div> <!-- /container -->

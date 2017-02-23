@@ -45,31 +45,40 @@ public class ElegirPersonaje extends HttpServlet {
 		
 		Personaje p1=ctrl.getPersonaje(cod1);
 		if(p1!=null){
+			request.getSession().setAttribute("p1Error", false);
 			System.out.println("entra 1");
 			p1.setEnergiaPartida(p1.getEnergia());
 			p1.setVidaPartida(p1.getVida());
 		}
-		else
+		else{
+			request.getSession().setAttribute("p1Error", true);
+			request.getRequestDispatcher("index.jsp").forward(request, response);
 			System.out.println("null");
-			//notificar que no se encontró personaje. No seguir ejecutando el codigo que sigue debajo.
+			//notificar que no se encontrï¿½ personaje. No seguir ejecutando el codigo que sigue debajo.
+			}
 		Personaje p2=ctrl.getPersonaje(cod2);
 		if(p2!=null){
+			request.getSession().setAttribute("p2Error", false);
 			p2.setEnergiaPartida(p2.getEnergia());
 			p2.setVidaPartida(p2.getVida());
 		}
-		else
+		else{
+			request.getSession().setAttribute("p2Error", true);
+			request.getRequestDispatcher("index.jsp").forward(request, response);
 			System.out.println("null");
-			//notificar que no se encontró personaje. No seguir ejecutando el codigo que sigue debajo.
+			//notificar que no se encontrï¿½ personaje. No seguir ejecutando el codigo que sigue debajo.
+		}
 
 
-
-		request.getSession().setAttribute("P1", p1);
-		request.getSession().setAttribute("P2", p2);
-		request.getSession().setAttribute("gano", false);
-		request.getSession().setAttribute("errorEnergia", false);
-		request.getSession().setAttribute("turno", rn.nextInt(2) + 1);
-		//response.sendRedirect("WEB-INF/war.jsp");
-		request.getRequestDispatcher("WEB-INF/pelea.jsp").forward(request, response);
+		if(p1!=null && p2!=null){
+			request.getSession().setAttribute("P1", p1);
+			request.getSession().setAttribute("P2", p2);
+			request.getSession().setAttribute("gano", false);
+			request.getSession().setAttribute("errorEnergia", false);
+			request.getSession().setAttribute("turno", rn.nextInt(2) + 1);
+			//response.sendRedirect("WEB-INF/war.jsp");
+			request.getRequestDispatcher("WEB-INF/pelea.jsp").forward(request, response);
+		}
 		
 	}
 
